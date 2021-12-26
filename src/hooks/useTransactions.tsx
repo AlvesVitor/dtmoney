@@ -17,15 +17,15 @@ interface Transaction {
     createdAt: string;
 }
 
-//Omit segue por anotação de atributos a serem ignorados
+interface TransactionProviderProps {
+    children: ReactNode
+}
+
 type TransactionInput = Omit<Transaction, 'id' | 'createdAt'>
 
 //pick segue por anotação de atributos a serem copiados
 // type TransactionInput = Pick<Transaction, 'title' | 'amout' | 'type' | 'category'>
 
-interface TransactionProviderProps {
-    children: ReactNode
-}
 export function TransactionsProvider({ children }: TransactionProviderProps) {
     const [transactions, setTransactions] = useState<Transaction[]>([]);
 

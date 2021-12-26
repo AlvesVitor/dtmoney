@@ -17,6 +17,6 @@
  <img align="center" alt="js" src="https://img.shields.io/badge/styled--components-DB7093?style=for-the-badge&logo=styled-components&logoColor=white" />
  </div>
 
- <h1 align = "center" fontSize="12px">
-  Projeto desenvolvido durante o Ignite da Rocketseat
-</h1>
+ <h4 align = "center" style="margin-top: 10px">
+  Projeto desenvolvido durante o Ignite da Rocketseat.
+</h4>

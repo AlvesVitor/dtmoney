@@ -16,7 +16,16 @@ interface Transaction {
     category: string;
     createdAt: string;
 }
+interface Transaction2 {
+    id: number;
+    title: string;
+    amount: number;
+    type: string;
+    category: string;
+    createdAt: string;
+}
 
+<<<<<<< HEAD
 interface TransactionProviderProps {
     children: ReactNode
 }
@@ -26,15 +35,22 @@ type TransactionInput = Omit<Transaction, 'id' | 'createdAt'>
 //pick segue por anotação de atributos a serem copiados
 // type TransactionInput = Pick<Transaction, 'title' | 'amout' | 'type' | 'category'>
 
+=======
+type TransactionInput = Omit<Transaction, 'id' | 'createdAt'>
+
+interface TransactionProviderProps {
+    children: ReactNode
+}
+>>>>>>> 016ab91ba5c9c3b527f589cc9f69be090e218abd
 export function TransactionsProvider({ children }: TransactionProviderProps) {
     const [transactions, setTransactions] = useState<Transaction[]>([]);
-
+    
     useEffect(() => {
         api.get("/transactions")
             .then(response => setTransactions(response.data.transactions))
 
     }, [])
-
+    
     async function createTransaction(transactionInput: TransactionInput) {
 
         const response = await api.post("/transactions", {
@@ -42,7 +58,7 @@ export function TransactionsProvider({ children }: TransactionProviderProps) {
 
             createdAt: new Date()
         })
-
+        
         const { transaction } = response.data;
 
         setTransactions([
@@ -50,20 +66,25 @@ export function TransactionsProvider({ children }: TransactionProviderProps) {
             transaction
         ])
     }
-
+    
     return (
         <TransactionContext.Provider
             value={{ transactions, createTransaction }}
-        >
+            >
             {children}
         </TransactionContext.Provider>
     )
-
+    
 }
 
 export function useTransaction() {
     const context = useContext(TransactionContext);
-
+    
     return context;
-
+    
 }
+
+
+
+//pick segue por anotação de atributos a serem copiados
+// type TransactionInput = Pick<Transaction, 'title' | 'amout' | 'type' | 'category'>
